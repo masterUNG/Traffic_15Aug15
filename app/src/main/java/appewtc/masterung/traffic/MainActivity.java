@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
 
             }   // event
         });
-    }
+    }   // buttonController
 
     private void initialWidget() {
         trafficListView = (ListView) findViewById(R.id.listView);
