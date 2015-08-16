@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 
@@ -60,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
         intDrawable[19] = R.drawable.traffic_20;
 
         //SetUP Title
-        String[] strTitle = {"ห้ามเลียวซ้าย", "ห้ามเลียวขวา", "ตรงไป", "เลียวขวา", "เลียวซ้าย",
+        final String[] strTitle = {"ห้ามเลียวซ้าย", "ห้ามเลียวขวา", "ตรงไป", "เลียวขวา", "เลียวซ้าย",
                 "หยุด", "ทางเข้า", "ทางออก", "หยุด", "รถไม่เกิน 2.5m",
                 "ห้ามเลียวซ้าย", "ห้ามเลียวขวา", "ตรงไป", "เลียวขวา", "เลียวซ้าย",
                 "ห้ามเลียวซ้าย", "ห้ามเลียวขวา", "ตรงไป", "เลียวขวา", "เลียวซ้าย"};
@@ -68,6 +69,23 @@ public class MainActivity extends AppCompatActivity {
         //Drive Adapter
         MyAdapter objMyAdapter = new MyAdapter(MainActivity.this, strTitle, intDrawable);
         trafficListView.setAdapter(objMyAdapter);
+
+        //Active ListView
+        trafficListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                //Intent to DetailActivity
+                Intent objIntent = new Intent(MainActivity.this, DetailActivity.class);
+
+                //PutExtra
+                objIntent.putExtra("Title", strTitle[i]);
+
+                startActivity(objIntent);
+            }   // event
+        });
+
+
 
     }   // createListView
 
