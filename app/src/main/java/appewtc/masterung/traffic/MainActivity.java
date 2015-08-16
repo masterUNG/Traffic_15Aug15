@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
     private void createListView() {
 
         //Setup Source of Image
-        int[] intDrawable = new int[20];
+        final int[] intDrawable = new int[20];
         intDrawable[0] = R.drawable.traffic_01;
         intDrawable[1] = R.drawable.traffic_02;
         intDrawable[2] = R.drawable.traffic_03;
@@ -80,6 +80,8 @@ public class MainActivity extends AppCompatActivity {
 
                 //PutExtra
                 objIntent.putExtra("Title", strTitle[i]);
+                objIntent.putExtra("Image", intDrawable[i]);
+                objIntent.putExtra("Index", i);
 
                 startActivity(objIntent);
             }   // event
